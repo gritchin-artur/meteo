@@ -1,12 +1,213 @@
-*,
-*::before,
-*::after {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #565454;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-image: url('../src/img/kakaya-pogoda-budet-v-astane-i-almaty-23-25-iyunya_bizmedia-kz_.jpeg');
+    color: #f1f5f9;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(45deg, #6366f1, #0ea5e9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 5px rgba(14, 165, 233, 0.4);
+}
+
+.container {
+    margin: 0 auto;
+}
+
+#meteo-container {
+    overflow: hidden;
+    overflow-x: auto;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    padding-top: 5vw;
+    padding-bottom: 5vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    background-color: rgba(30, 41, 59, 0.6);
+    box-shadow: 0 0 12px rgba(103, 232, 249, 0.3);
+    border-radius: 20px;
+}
+
+.meteo-list {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.meteo-item {
+    background: rgba(100, 116, 139, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.meteo-item[data-weather='0'],
+.meteo-item[data-weather='1'] {
+    background: linear-gradient(135deg, #fde68a, #fef3c7);
+}
+.meteo-item[data-weather='2'],
+.meteo-item[data-weather='3'] {
+    background: linear-gradient(135deg, #e0e7ff, #a5b4fc);
+}
+.meteo-item[data-weather='61'],
+.meteo-item[data-weather='63'],
+.meteo-item[data-weather='65'],
+.meteo-item[data-weather='80'],
+.meteo-item[data-weather='81'],
+.meteo-item[data-weather='82'] {
+    background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+}
+.meteo-item[data-weather='71'],
+.meteo-item[data-weather='73'],
+.meteo-item[data-weather='75'] {
+    background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+}
+
+.meteo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 24px rgba(14, 165, 233, 0.4);
+    background: rgba(14, 165, 233, 0.2);
+}
+
+.half-day {
+    display: flex;
+    gap: 2vw;
+}
+
+.date {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #f1f5f9;
+    text-align: center;
+    text-shadow: 0 0 4px rgba(241, 245, 249, 0.3);
+}
+
+.hourly-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.hourly-item {
+    background: rgba(30, 64, 175, 0.3);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.hourly-item:hover {
+    background: rgba(103, 232, 249, 0.2);
+}
+
+.time-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+}
+
+.hour-el {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #38bdf8;
+    text-shadow: 0 0 2px rgba(56, 189, 248, 0.3);
+}
+
+.temp-el {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #f472b6;
+    text-shadow: 0 0 3px rgba(244, 114, 182, 0.3);
+}
+
+.weather-icon {
+    font-size: 1.5rem;
+    color: #a3e635;
+    text-shadow: 0 0 4px rgba(163, 230, 53, 0.4);
+}
+
+.footer {
+    text-align: center;
+    padding: 15px 0;
+    background: rgb(209 213 219 / 11%);
+    backdrop-filter: blur(10px);
+    color: #f9fafb;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 20px;
+    box-shadow: 0 -2px 8px rgba(125, 211, 252, 0.2);
+    border-radius: 10px;
+}
+
+.footer a {
+    color: #7dd3fc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #f87171;
+    text-shadow: 0 0 4px rgba(248, 113, 113, 0.4);
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .meteo-item {
+        padding: 15px;
+    }
+
+    .date {
+        font-size: 1.5rem;
+    }
+
+    .hourly-list {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+
+    .hourly-item {
+        padding: 8px;
+    }
+
+    .hour-el,
+    .temp-el {
+        font-size: 0.9rem;
+    }
+
+    .weather-icon {
+        font-size: 1.2rem;
+    }
+
+    .footer {
+        font-size: 0.9rem;
+        padding: 10px 0;
+    }
 }

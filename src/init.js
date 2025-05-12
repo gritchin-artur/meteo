@@ -1,1 +1,3 @@
-import data from './data.js';
+import { loadEvent } from './events/loadEvent.js';
+
+loadEvent();
